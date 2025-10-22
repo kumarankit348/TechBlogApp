@@ -4,6 +4,8 @@ import {
   resetErrorAction,
   resetSuccessAction,
 } from "../globalSlice/globalSlice";
+let API_URL="https://techblogappbackend.onrender.com/api/v1";
+
 
 const INITIAL_STATE = {
   categories: [],
@@ -20,7 +22,7 @@ export const fetchCategoriesAction = createAsyncThunk(
     // make request
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/api/v1/categories"
+        `${API_URL}/categories`
       );
       return data;
     } catch (error) {
