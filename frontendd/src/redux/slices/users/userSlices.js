@@ -183,13 +183,15 @@ const INITIAL_STATE = {
 
 // -------------------- Thunks --------------------
 
+let API_URL="https://techblogappbackend.onrender.com/api/v1";
+
 // Login / register / logout / userPublicProfile as before...
 export const loginAction = createAsyncThunk(
   "users/login",
   async (payload, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/v1/users/login",
+        "${API_URL}/users/login",
         payload
       );
       localStorage.setItem("userInfo", JSON.stringify(data));
@@ -205,7 +207,7 @@ export const registerAction = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/v1/users/register",
+        "${API_URL}/users/register",
         payload
       );
       return data;
@@ -231,7 +233,7 @@ export const userPublicProfileAction = createAsyncThunk(
         },
       };
       const { data } = await axios.get(
-        `http://localhost:3000/api/v1/users/public-profile/${userId}`,
+        `${API_URL}/users/public-profile/${userId}`,
         config
       );
       return data;
@@ -250,7 +252,7 @@ export const followUserAction = createAsyncThunk(
       const config = { headers: { Authorization: `Bearer ${token}` } };
       // adjust endpoint/method to match your backend
       const { data } = await axios.put(
-        `http://localhost:3000/api/v1/users/follow/${userId}`,
+        `${API_URL}/users/follow/${userId}`,
         {},
         config
       );
@@ -269,7 +271,7 @@ export const unfollowUserAction = createAsyncThunk(
       const token = getState()?.users?.userAuth?.userInfo?.token;
       const config = { headers: { Authorization: `Bearer ${token}` } };
       const { data } = await axios.put(
-        `http://localhost:3000/api/v1/users/unfollow/${userId}`,
+        `${API_URL}/users/unfollow/${userId}`,
         {},
         config
       );
@@ -288,7 +290,7 @@ export const blockUserAction = createAsyncThunk(
       const token = getState()?.users?.userAuth?.userInfo?.token;
       const config = { headers: { Authorization: `Bearer ${token}` } };
       const { data } = await axios.put(
-        `http://localhost:3000/api/v1/users/block/${userIdToBlock}`,
+        `${API_URL}/users/block/${userIdToBlock}`,
         {},
         config
       );
@@ -308,7 +310,7 @@ export const unblockUserAction = createAsyncThunk(
       const token = getState()?.users?.userAuth?.userInfo?.token;
       const config = { headers: { Authorization: `Bearer ${token}` } };
       const { data } = await axios.put(
-        `http://localhost:3000/api/v1/users/unblock/${userId}`,
+        `${API_URL}/users/unblock/${userId}`,
         {},
         config
       );
@@ -338,7 +340,7 @@ export const getPrivateProfileAction = createAsyncThunk(
       );
 
       const { data } = await axios.get(
-        "http://localhost:3000/api/v1/users/profile",
+        "${API_URL}/users/profile",
         config
       );
 
@@ -372,7 +374,7 @@ export const updatePrivateProfileAction = createAsyncThunk(
       };
 
       const { data } = await axios.put(
-        "http://localhost:3000/api/v1/users/profile",
+        "${API_URL}/users/profile",
         payload,
         config
       );
