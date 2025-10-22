@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // for handling global errors
 const asyncHandler = require("express-async-handler");
 // for the Post model
-const Post = require("../../models/Posts/post");
+const Post = require("../../models/Posts/Post");
 // for the Category model
 const Category = require("../../models/Categories/category");
 // for user model
