@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Post = require("../../models/Posts/Post");
-const Comment = require("../../models/Comments/comment");
+const Comment = require("../../models/Comments/Comment");
 
 // @desc    Create a new comment
 // @route   POST /api/v1/comments/:postId
