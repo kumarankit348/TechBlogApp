@@ -191,7 +191,7 @@ export const loginAction = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "${API_URL}/users/login",
+        `${API_URL}/users/login`,
         payload
       );
       localStorage.setItem("userInfo", JSON.stringify(data));
@@ -207,7 +207,7 @@ export const registerAction = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "${API_URL}/users/register",
+        `${API_URL}/users/register`,
         payload
       );
       return data;
@@ -340,7 +340,7 @@ export const getPrivateProfileAction = createAsyncThunk(
       );
 
       const { data } = await axios.get(
-        "${API_URL}/users/profile",
+        `${API_URL}/users/profile`,
         config
       );
 
@@ -374,7 +374,7 @@ export const updatePrivateProfileAction = createAsyncThunk(
       };
 
       const { data } = await axios.put(
-        "${API_URL}/users/profile",
+        `${API_URL}/users/profile`,
         payload,
         config
       );
