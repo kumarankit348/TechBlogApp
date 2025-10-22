@@ -1,4 +1,4 @@
-const User = require("../models/Users/User");
+const User = require("../models/Users/user");
 const isAccountVerified = async (req, res, next) => {
   try {
     // find the user by id
