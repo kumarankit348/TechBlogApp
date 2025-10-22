@@ -6,6 +6,9 @@ import {
   resetSuccessAction,
 } from "../globalSlice/globalSlice";
 
+let API_URL="https://techblogappbackend.onrender.com/api/v1";
+
+
 const INITIAL_STATE = {
   comments: [],
   comment: null,
@@ -26,7 +29,7 @@ export const createCommentAction = createAsyncThunk(
         },
       };
       const { data } = await axios.post(
-        `http://localhost:3000/api/v1/comments/${payload?.postId}`,
+        `${API_URL}/comments/${payload?.postId}`,
         { message: payload?.message },
         config
       );
